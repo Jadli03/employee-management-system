@@ -5,8 +5,22 @@ import 'ag-grid-community/styles/ag-grid.css'; // Core grid CSS, always needed
 import 'ag-grid-community/styles/ag-theme-alpine.css'; // Optional theme CSS
 import { employees } from '../data';
 
-import { Button } from 'react-bootstrap';
+import { Button,Container } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+
+
+ 
+const roleRender = (params) => {
+  return(
+      params.data.role.title
+  )
+}
+
+const clientRender = (params) => {
+  return(
+      params.data.client.name
+  )
+}
 
 const EmployeeList = () => {
 
@@ -14,14 +28,24 @@ const EmployeeList = () => {
  const [rowData, setRowData] = useState(); // Set rowData to Array of Objects, one Object per Row
  //const accountDetails = employees.map(emp => emp.accountDetails)
 
+
  // Each Column Definition results in one Column.
- const [columnDefs, setColumnDefs] = useState([
+//  const [columnDefs, setColumnDefs] = useState([
+//    {field: 'id', filter: true},
+//    {field: 'name', filter: true},
+//    {field: 'email', filter: true},
+//    {field: 'active', filter: true},
+//    {field: 'role',cellRenderer: roleRender,  filter: true }
+//  ]);
+
+ const columnDefs = useMemo(()=> [
    {field: 'id', filter: true},
-   {field: 'name', filter: true},
+   {field: 'firstName', filter: true},
+   {field: 'lastName', filter: true},
    {field: 'email', filter: true},
    {field: 'active', filter: true},
-   {field: 'accountNumber', filter: true},
-   {field: 'bankName', filter: true},
+   {field: 'title',cellRenderer: roleRender,  filter: true},
+   {field: 'client',  filter: true }
  ]);
 
  // DefaultColDef sets props common to all Columns
@@ -54,7 +78,7 @@ const EmployeeList = () => {
   <Button className='add-emp-btn'>Add Employee</Button>
   </LinkContainer>
 
-     <div className="ag-theme-alpine" style={{width: "100%", height: 600}}>
+     <div className="ag-theme-alpine" style={{overflow: 'hidden', width: "100%", height: 600}}>
        <AgGridReact
            ref={gridRef} // Ref for accessing Grid's API
            rowData={rowData} // Row Data for Rows
