@@ -3,6 +3,7 @@ import EmployeeList from "./Components/EmployeeList";
 import Header from "./Components/Header";
 import { Routes, Route } from "react-router-dom";
 import CreateEmployee from "./Components/CreateEmployee";
+import Employee from "./Components/Employee";
 
 const App = () => {
   return (
@@ -11,7 +12,7 @@ const App = () => {
 
      <div className='emp-container'>
       <Routes>
-      <Route  path="/" element={<EmployeeList />} />
+      <Route  path="/" element={<Employee />} />
       <Route  path="employees" element={<EmployeeList />} />
       <Route path="register-employee" element={<CreateEmployee />} />
       </Routes>

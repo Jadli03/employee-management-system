@@ -1,122 +1,211 @@
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import { LinkContainer } from 'react-router-bootstrap';
-import Container from 'react-bootstrap/esm/Container';
-import {Col,Row} from 'react-bootstrap/esm';
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import Grid from '@mui/material/Grid';
 
-const CreateEmployee = () => {
+
+
+export default function CreateEmployee({open,handleClose,data, onChange, handleSubmit}) {
+  
   return (
-    <Container> 
-      <LinkContainer to="/">
-       <Button variant="primary" className="mb-3" >
-          Back
-        </Button>
-        </LinkContainer>
-        <Form>
-        <Row>
-          <Col sm={12} md={6} lg={6}>
-          <Form.Group className="mb-3">
-            <Form.Label>Name</Form.Label>
-           <Form.Control type="text" 
-             placeholder="Enter Name" 
-              name="ename"
-              value=""
-               />
-         </Form.Group>
-          </Col>
-
-          <Col sm={12} md={6} lg={6}>
-          <Form.Group className="mb-3">
-      <Form.Label>Email address</Form.Label>
-      <Form.Control type="email" 
-      placeholder="Enter email" 
-      name="email"
-      value=""
-      />
-     </Form.Group>
-          </Col>
-        </Row>
-
-        <Row>
-          <Col sm={12} md={6} lg={6}>
-          <Form.Group className="mb-3">
-    <Form.Label>Active </Form.Label><br/>
-    <Form.Check
-            inline
-            label="Yes"
-            name="group1"
-            type="radio"
-            id="inline-radio-1"
-
+    <div>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Create New Employee</DialogTitle>
+        <DialogContent>
+          <form>
+        <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <TextField
+            required
+            id="id"
+            name="id"
+            label="Employee Id"
+            fullWidth
+            variant="standard"
+            value={data.id}
+            onChange={e=>onChange(e)}
           />
-          <Form.Check
-            inline
-            label="No"
-            name="group1"
-            type="radio"
-            id="inline-radio-2"
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="firstName"
+            name="firstName"
+            label="First Name"
+            fullWidth
+            variant="standard"
+            value={data.firstName}
+            onChange={e=>onChange(e)}
           />
-    </Form.Group>
-          </Col>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="lastName"
+            name="lastName"
+            label="Last Name"
+            fullWidth
+            variant="standard"
+            value={data.lastName}
+            onChange={e=>onChange(e)}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            required
+            id="email"
+            name="email"
+            label="Email"
+            fullWidth
+            variant="standard"
+            value={data.email}
+            onChange={e=>onChange(e)}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            id="panNumber"
+            name="panNumber"
+            label="Pan Number"
+            fullWidth
+            variant="standard"
+            value={data.panNumber}
+            onChange={e=>onChange(e)}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="city"
+            name="city"
+            label="City"
+            fullWidth
+            variant="standard"
+            value={data.city}
+            onChange={e=>onChange(e)}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            id="state"
+            name="state"
+            label="state"
+            fullWidth
+            variant="standard"
+            value={data.state}
+            onChange={e=>onChange(e)}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="pinCode"
+            name="pinCode"
+            label="Zip / Postal code"
+            fullWidth
+            variant="standard"
+            value={data.pinCode}
+            onChange={e=>onChange(e)}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="country"
+            name="country"
+            label="Country"
+            fullWidth
+            variant="standard"
+            value={data.country}
+            onChange={e=>onChange(e)}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="roleName"
+            name="roleName"
+            label="Role"
+            fullWidth
+            variant="standard"
+            value={data.roleName}
+            onChange={e=>onChange(e)}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="manager"
+            name="manager"
+            label="Manager"
+            fullWidth
+            variant="standard"
+            value={data.manager}
+            onChange={e=>onChange(e)}
+          />
+        </Grid>
 
-          <Col sm={12} md={6} lg={6}>
-          <Form.Group className="mb-3">
-      <Form.Label>Role</Form.Label>
-      <Form.Control type="text" 
-      placeholder="Enter Role" 
-      name="role"
-      value=""
-      />
-    </Form.Group> 
-          </Col>
-        </Row>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="clientName"
+            name="clientName"
+            label="Client"
+            fullWidth
+            variant="standard"
+            value={data.clientName}
+            onChange={e=>onChange(e)}
+          />
+        </Grid>
 
-        <Row>
-          <Col sm={12} md={6} lg={6}>
-    <Form.Group className="mb-3">
-      <Form.Label>Bank Account No.</Form.Label>
-      <Form.Control type="text" 
-      placeholder="Enter Bank Account No." 
-      name="accnumber"
-      value=""
-      />
-    </Form.Group> 
-          </Col>
-
-          <Col sm={12} md={6} lg={6}>
-          <Form.Group className="mb-3">
-      <Form.Label>Client Name</Form.Label>
-      <Form.Control type="text" 
-      placeholder="Enter Client Name" 
-      name="cname"
-      value=""
-      />
-    </Form.Group> 
-          </Col>
-        </Row>
-
-        <Row> 
-          <Col sm={12} md={6} lg={6}> 
-          <Form.Group className="mb-3">
-      <Form.Label>Bank Name</Form.Label>
-      <Form.Control type="text" 
-      placeholder="Enter Bank Name" 
-      name="bank"
-      value=""
-      />
-    </Form.Group>  
-          </Col>
-        </Row>
-
-        <Row> 
-        <Button style={{width: '100px'}} variant="primary" type="submit"> 
-      Register
-    </Button>
-        </Row>
-
-        </Form>
-    </Container>
-  )
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="clientManager"
+            name="clientManager"
+            label="Client Manager"
+            fullWidth
+            variant="standard"
+            value={data.clientManager}
+            onChange={e=>onChange(e)}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="accountNumber"
+            name="accountNumber"
+            label="Account Number"
+            fullWidth
+            variant="standard"
+            value={data.accountNumber}
+            onChange={e=>onChange(e)}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="bankName"
+            name="bankName"
+            label="Bank Name"
+            fullWidth
+            variant="standard"
+            value={data.bankName}
+            onChange={e=>onChange(e)}
+          />
+        </Grid>
+      </Grid>
+      </form>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="secondary" variant="outlined">Cancel</Button>
+          <Button  color="primary" onClick={()=>handleSubmit()} variant="contained" >Submit</Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+  );
 }
-
-export default CreateEmployee;

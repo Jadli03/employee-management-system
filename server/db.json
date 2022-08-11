@@ -1,0 +1,77 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "firstName": "Suraj",
+      "lastName": "Rawat",
+      "email": "suraj@gmail.com",
+      "panNumber": 1234556677,
+      "active": true,
+      "manager": "Shayam",
+      "role": {
+        "roleId": 1,
+        "roleName": "Trainee Analyst"
+      },
+      "client": {
+        "clientId": 1,
+        "clientName": "Morgan Stanley",
+        "clientManager": "Anthony"
+      },
+      "address": {
+        "city": "Kotdwara",
+        "state": "Uttarakhand",
+        "country": "India",
+        "pinCode": 248002
+      },
+      "accountDetails": {
+        "accountNumber": 33475885,
+        "bankName": "ICICI"
+      }
+    },
+    {
+      "id": 2,
+      "firstName": "Prashant",
+      "lastName": "Negi",
+      "email": "prashant@gmail.com",
+      "panNumber": 1234556677,
+      "active": false,
+      "manager": "Charan",
+      "role": {
+        "roleId": 1,
+        "roleName": "Software Engineer"
+      },
+      "client": {
+        "clientId": 1,
+        "clientName": "Morgan Stanley",
+        "clientManager": "bharat"
+      },
+      "address": {
+        "city": "dehradun",
+        "state": "Uttarakhand",
+        "country": "India",
+        "pinCode": 248002
+      },
+      "accountDetails": {
+        "accountNumber": 33475885,
+        "bankName": "ICICI"
+      }
+    },
+    {
+      "id": "101",
+      "firstName": "suraj",
+      "lastName": "jadli",
+      "email": "surajjadli@yahoo.com",
+      "panNumber": "32323",
+      "manager": "balaji",
+      "city": "Kotdwara",
+      "state": "uttarakhand",
+      "pinCode": "246149",
+      "country": "indai",
+      "roleName": "trainee",
+      "clientName": "morgan stanley",
+      "clientManager": "bharat",
+      "accountNumber": "76569",
+      "bankName": "icici"
+    }
+  ]
+}
