@@ -37,13 +37,21 @@ const Employee = () => {
     setOpen(false);
   };
 
+
+
     const columnDefs = useMemo(()=> [
         {headerName: "Employee Id", field: 'id'},
         {headerName: "First Name", field: 'firstName'},
         {headerName: "Last Name", field: 'lastName'},
         {headerName: "Email", field: 'email'},
         {headerName: "Active", field: 'active'},
-        {headerName: "Wissen Manager", field: 'manager'}
+        {headerName: "Wissen Manager", field: 'manager'},
+        {
+          headerName: "Actions", field: "id", cellRendererFramework: (params) => <div>
+            <Button variant="outlined" color="primary" onClick={() => handleUpdate(params.data)}>Update</Button>
+            <Button variant="outlined" color="secondary" onClick={() => handleDelete(params.value)}>Delete</Button>
+          </div>
+        }
       ]);
 
       useEffect(()=>{
@@ -65,16 +73,58 @@ const Employee = () => {
         setGridApi(params);
       }
 
+      // const handleSubmit = () => {
+      //   fetch(url, {
+      //     method: "POST",
+      //     body: JSON.stringify(formData),
+      //     headers: {
+      //       'content-type': 'Application/json'
+      //     }
+      //   })
+      //   .then(res => res.json())
+      //   .then(res => getEmployees());
+      // }
+
       const handleSubmit = () => {
-        fetch(url, {
-          method: "POST",
-          body: JSON.stringify(formData),
-          headers: {
-            'content-type': 'Application/json'
-          }
-        })
-        .then(res => res.json())
-        .then(res => getEmployees());
+        if (formData.id) {
+          //updating employee
+          const confirm = window.confirm("Are you sure, you want to update this row ?")
+          confirm && fetch(url + `/${formData.id}`, {
+            method: "PUT", body: JSON.stringify(formData), headers: {
+              'content-type': "application/json"
+            }
+          }).then(res => res.json())
+            .then(res => {
+              handleClose()
+              getEmployees()
+    
+            })
+        } else {
+          // adding employee
+          fetch(url, {
+            method: "POST", body: JSON.stringify(formData), headers: {
+              'content-type': "application/json"
+            }
+          }).then(res => res.json())
+            .then(res => {
+              handleClose()
+              getEmployees()
+            })
+        }
+      }
+    
+
+      const handleUpdate = (oldData) => {
+        setFormData(oldData)
+        handleClickOpen()
+      }
+      //deleting a user
+      const handleDelete = (id) => {
+        const confirm = window.confirm("Are you sure, you want to delete this row", id)
+        if (confirm) {
+          fetch(url + `/${id}`, { method: "DELETE" }).then(res => res.json()).then(res => getEmployees())
+    
+        }
       }
       
       const defaultColDef = useMemo( ()=> ({

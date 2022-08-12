@@ -55,23 +55,6 @@
         "accountNumber": 33475885,
         "bankName": "ICICI"
       }
-    },
-    {
-      "id": "101",
-      "firstName": "suraj",
-      "lastName": "jadli",
-      "email": "surajjadli@yahoo.com",
-      "panNumber": "32323",
-      "manager": "balaji",
-      "city": "Kotdwara",
-      "state": "uttarakhand",
-      "pinCode": "246149",
-      "country": "indai",
-      "roleName": "trainee",
-      "clientName": "morgan stanley",
-      "clientManager": "bharat",
-      "accountNumber": "76569",
-      "bankName": "icici"
     }
   ]
 }
